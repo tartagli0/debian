@@ -8,3 +8,6 @@ I removed the broken screen from an old laptop and repurposed it as a (literally
 * 6GB DDR3L 1600MHz memory
 * [PNY CS1311 2.5'' 120GB SATA III SSD](https://www.pny.com/SSD-CS1311?sku=SSD7CS1311-120-RB)
 * WD My Passport 0820 2TB USB 3.0 Portable HDD
+
+## Software
+I installed [Debian 11 "Bullseye"](https://wiki.debian.org/DebianBullseye), obtained via the project's [bittorrent download page](https://cdimage.debian.org/debian-cd/current-live/amd64/bt-hybrid/). The most current stable release was [version 11.4](https://www.debian.org/News/2022/20220709).
