@@ -48,3 +48,28 @@ service transmission-daemon start
 
 Transmission web interface should now be accessible via port 9091 using the server's IP address. For example `http://192.168.4.120:9091/transmission/web/`
 
+
+# Plex Media Server
+The [official installation instructions](https://support.plex.tv/articles/235974187-enable-repository-updating-for-supported-linux-server-distributions/) for adding the Plex repository on Debian and Ubuntu use the [deprecated **apt-key** utility](https://manpages.debian.org/bullseye/apt/apt-key.8.en.html). Use the steps below in lieu of section **DEB-based distros (Ubuntu, etc.)** in the official documentation.
+1. Download the Plex repository's signed GPG key.
+```bash
+curl -o /etc/apt/trusted.gpg.d/plexmediaserver.asc \
+  https://downloads.plex.tv/plex-keys/PlexSign.key
+```
+2. Add the Plex repository as an APT data source. See man pages for [apt-key](https://manpages.debian.org/bullseye/apt/apt-key.8.en.html) and [sources.list](https://manpages.debian.org/bullseye/apt/sources.list.5.en.html) for details.
+    1. Create the file `/etc/apt/sources.list.d/plexmediaserver.sources`.
+    2. Add the lines:
+    ```bash
+    Types: deb
+    URIs: https://downloads.plex.tv/repo/deb
+    Suites: public
+    Components: main
+    Signed-By: /etc/apt/trusted.gpg.d/plexmediaserver.asc
+    ```
+3. Install Plex Media Server.
+```bash
+apt update
+apt install plexmediaserver
+```
+
+The Plex Web App can now be accessed via the server's IP address. For example: `http://192.168.4.120:32400/web`. See the [official documentation](https://support.plex.tv/articles/200288666-opening-plex-web-app/) for details.
