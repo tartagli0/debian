@@ -73,3 +73,10 @@ apt install plexmediaserver
 ```
 
 The Plex Web App can now be accessed via the server's IP address. For example: `http://192.168.4.120:32400/web`. See the [official documentation](https://support.plex.tv/articles/200288666-opening-plex-web-app/) for details.
+
+## File naming conventions
+Plex can be fastidious in matching file names to corresponding titles in a movie database.
+
+For example, the movie [Blade Runner 2049](https://www.warnerbros.com/movies/blade-runner-2049) will be ignored if you name the file `Blade_Runner_2049.mkv`, as Plex will try to match a movie of the same name made in 2049. Naming the file `Blade_Runner_2049_2017.mkv` will work, as Plex will will look for the movie with that title made in 2017.
+
+See [Naming and organizing your Movie files](https://support.plex.tv/articles/naming-and-organizing-your-movie-media-files/) in the official documentation for details.
