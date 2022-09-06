@@ -4,6 +4,7 @@
         "keyrings",
         "Plex",
         "plexmediaserver",
-        "SATA"
+        "SATA",
+        "smbd"
     ]
 }

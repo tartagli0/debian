@@ -12,6 +12,7 @@ I removed the broken screen from an old laptop and repurposed it as a (literally
 ## Software
 I installed [Debian 11 "Bullseye"](https://wiki.debian.org/DebianBullseye), obtained via the project's [bittorrent download page](https://cdimage.debian.org/debian-cd/current-live/amd64/bt-hybrid/). The most current stable release was [version 11.4](https://www.debian.org/News/2022/20220709).
 
+
 # Transmission
 The [Transmission](https://transmissionbt.com/) bittorrent client provides a daemon that facilitates downloading large files directly to a server via a web interface.
 
@@ -80,3 +81,17 @@ Plex can be fastidious in matching file names to corresponding titles in a movie
 For example, the movie [Blade Runner 2049](https://www.warnerbros.com/movies/blade-runner-2049) will be ignored if you name the file `Blade_Runner_2049.mkv`, as Plex will try to match a movie of the same name made in 2049. Naming the file `Blade_Runner_2049_2017.mkv` will work, as Plex will will look for the movie with that title made in 2017.
 
 See [Naming and organizing your Movie files](https://support.plex.tv/articles/naming-and-organizing-your-movie-media-files/) in the official documentation for details.
+
+
+# Samba
+Install the [Samba](https://www.samba.org/samba/) server with the command:
+```bash
+apt install samba
+```
+
+The [server daemon](https://www.samba.org/samba/docs/current/man-html/smbd.8.html) is automatically enabled and started by [systemd](https://wiki.debian.org/systemd) when Samba is installed. Stop the running service via the [systemctl](https://manpages.debian.org/bullseye/systemd/systemctl.1.en.html) utility:
+```bash
+systemctl stop smbd
+```
+
+The configuration file used by the Samba server daemon is located at `/etc/samba/smb.conf` (see [Debian wiki](https://wiki.debian.org/Samba/ServerSimple) for a short example). Another copy of the default configuration is saved to `/usr/share/samba/smb.conf`, which you can use to restore initial settings.
