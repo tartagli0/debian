@@ -2,9 +2,11 @@
     "cSpell.words": [
         "distros",
         "keyrings",
+        "mailx",
         "Plex",
         "plexmediaserver",
         "SATA",
+        "smartmontools",
         "smbd"
     ]
 }
