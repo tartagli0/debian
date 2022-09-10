@@ -96,6 +96,8 @@ systemctl stop smbd
 
 The configuration file used by the Samba server daemon is located at `/etc/samba/smb.conf` (see [Debian wiki](https://wiki.debian.org/Samba/ServerSimple) for a short example). Another copy of the default configuration is saved to `/usr/share/samba/smb.conf`, which you can use to restore initial settings.
 
+
 # To Do
+* Add **panic action** parameter to **global** section (requires **mailx**).
 * **mailx** for notifications (e.g., Samba crash, HDD failure)
 * **smartmontools**
