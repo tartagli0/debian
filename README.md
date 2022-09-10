@@ -98,6 +98,6 @@ The configuration file used by the Samba server daemon is located at `/etc/samba
 
 
 # To Do
-* Add **panic action** parameter to **global** section (requires **mailx**).
+* Add **panic action** parameter to **global** section (requires **mailx**)
 * **mailx** for notifications (e.g., Samba crash, HDD failure)
 * **smartmontools**
