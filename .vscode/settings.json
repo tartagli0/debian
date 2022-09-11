@@ -9,6 +9,7 @@
         "SATA",
         "smartmontools",
         "smbd",
+        "smbpasswd",
         "usershare"
     ]
 }

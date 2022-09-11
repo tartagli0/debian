@@ -120,6 +120,14 @@ The **global** section will apply settings to all Samba shares. Edit the default
 
 ## **homes** section
 This section controls how Debian user home directories are shared via Samba.
+
+Before accessing a user's home directory, the user must be added to the **smbpasswd*. For example, the user *joi* would be added by running the following command *as root*:
+```bash
+smbpasswd -a joi
+```
+You will then be prompted to enter and confirm a new password for this user.
+
+The configuration below in `smb.conf` will allow access a user's home directory but won't allow you to create, delete, or modify files.
 ```
 [homes]
    # comment = Home Directories
@@ -129,6 +137,8 @@ This section controls how Debian user home directories are shared via Samba.
    directory mask = 0700
    valid users = %S
 ```
+
+In a Windows PC, access the share by opening **File Explorer** and then right-clicking on **This PC**. Select **Show more options** -> **Add network location**. Click **Next**; then select **Choose a custom network location** and click **Next** again. In the **Internet or network address** box, enter the local IP address and user name, for example: `\\192.168.50.203\joi`. Enter the name and password for the user in the next window to access their home directory.
 
 ## Printers
 Sections **printers** and **print$** can be fully commented out, as this server configuration doesn't include any shared printers.
