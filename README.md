@@ -98,6 +98,8 @@ The configuration file used by the Samba server daemon is located at `/etc/samba
 
 The following sections describe the settings I used for my home server, but might not be required for every case. Edits were performed relative to the default `smb.conf` file in Debian.
 
+**To-do:** Add explanations for all lines in config file.
+
 ## **global** section
 The **global** section will apply settings to all Samba shares. Edit the default configuration by adding or commenting out lines to match the example below.
 ```conf
@@ -115,8 +117,21 @@ The **global** section will apply settings to all Samba shares. Edit the default
     # map to guest = bad user
     # usershare allow guests = yes
 ```
-**To-do:** Add explanations for all lines in config file.
 
+## **homes** section
+This section controls how Debian user home directories are shared via Samba.
+```
+[homes]
+   # comment = Home Directories
+   browseable = no
+   # read only = yes
+   create mask = 0700
+   directory mask = 0700
+   valid users = %S
+```
+
+## Printers
+Sections **printers** and **print$** can be fully commented out, as this server configuration doesn't include any shared printers.
 
 # To Do
 1. **mailx** for notifications (e.g., Samba crash, HDD failure)
