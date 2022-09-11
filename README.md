@@ -96,8 +96,30 @@ systemctl stop smbd
 
 The configuration file used by the Samba server daemon is located at `/etc/samba/smb.conf` (see [Debian wiki](https://wiki.debian.org/Samba/ServerSimple) for a short example). Another copy of the default configuration is saved to `/usr/share/samba/smb.conf`, which you can use to restore initial settings.
 
+The following sections describe the settings I used for my home server, but might not be required for every case. Edits were performed relative to the default `smb.conf` file in Debian.
+
+## **global** section
+The **global** section will apply settings to all Samba shares. Edit the default configuration by adding or commenting out lines to match the example below.
+```conf
+[global]
+    logging = file
+    log file = /var/log/samba/log.%m
+    # max log size = 1000
+    # panic action = /usr/share/samba/panic-action %d
+    server role = standalone server
+    obey pam restrictions = yes
+    unix password sync = yes
+    passwd program = /usr/bin/passwd %u
+    passwd chat = *Enter\snew\s*\spassword:* %n\n *Retype\snew\s*\spassword:* %n\n *password\supdated\ssuccessfully* .
+    pam password change = yes
+    # map to guest = bad user
+    # usershare allow guests = yes
+```
+**To-do:** Add explanations for all lines in config file.
+
 
 # To Do
 1. **mailx** for notifications (e.g., Samba crash, HDD failure)
 2. Add **panic action** parameter to **global** section (requires **mailx**)
 3.  **smartmontools**
+4. Convert README to Github Pages site
