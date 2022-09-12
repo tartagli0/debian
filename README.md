@@ -102,7 +102,7 @@ The following sections describe the settings I used for my home server, but migh
 
 ## **global** section
 The **global** section will apply settings to all Samba shares. Edit the default configuration by adding or commenting out lines to match the example below.
-```conf
+```
 [global]
     logging = file
     log file = /var/log/samba/log.%m
@@ -127,12 +127,12 @@ smbpasswd -a joi
 ```
 You will then be prompted to enter and confirm a new password for this user.
 
-The configuration below in `smb.conf` will allow access a user's home directory but won't allow you to create, delete, or modify files.
+The configuration below in `smb.conf` will allow access to a user's home directory with full read, write, and execute permissions. Other users, however, will have no access to any files or directories created via Samba.
 ```
 [homes]
    # comment = Home Directories
    browseable = no
-   # read only = yes
+   read only = no
    create mask = 0700
    directory mask = 0700
    valid users = %S
