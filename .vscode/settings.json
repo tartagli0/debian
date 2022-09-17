@@ -1,15 +1,20 @@
 {
     "cSpell.words": [
+        "addgroup",
+        "adduser",
+        "bladerunner",
         "browseable",
         "distros",
         "keyrings",
         "mailx",
+        "nata",
         "Plex",
         "plexmediaserver",
         "SATA",
         "smartmontools",
         "smbd",
         "smbpasswd",
+        "usermod",
         "usershare"
     ]
 }

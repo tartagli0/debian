@@ -140,6 +140,57 @@ The configuration below in `smb.conf` will allow access to a user's home directo
 
 In a Windows PC, access the share by opening **File Explorer** and then right-clicking on **This PC**. Select **Show more options** -> **Add network location**. Click **Next**; then select **Choose a custom network location** and click **Next** again. In the **Internet or network address** box, enter the local IP address and user name, for example: `\\192.168.50.203\joi`. Enter the name and password for the user in the next window to access their home directory.
 
+## Custom Shares
+Before creating a guest share, configure file ownership and permissions on the Debian server. In this example, the group *family* is created to allow accounts access to family pictures and videos.
+1. Create *family* group.
+    ```bash
+    addgroup family
+    ```
+2. Change group ownership of pictures and home videos (file owner is *abe*).
+    ```bash
+    chown -R abe:family /data/Pictures
+    chown -R abe:family /data/Home_Videos
+    ```
+3. Give *family* group read and execute access (e.g., view list of files, change directory) for directories within pictures and home videos.
+    ```bash
+    find /data/Pictures -type d -exec chmod 0750 '{}' \;
+    find /data/Home_Videos -type d -exec chmod 0750 '{}' \;
+    ```
+4. Make all video and picture files readable by family group.
+    ```bash
+    find /data/Pictures -type f -exec chmod 0640 '{}' \;
+    find /data/Home_Videos -type f -exec chmod 0640 '{}' \;
+    ```
+
+In this setup, I allow all users to access a shared drive with the following restrictions:
+* All users can read and write to the root directory of the drive.
+* All users can view media files (e.g., movies, TV shows)
+* Only users in the *family* group can view pictures and home videos.
+* Users can only see files that they have access to.
+
+To create a *family* user, I use the following commands (user is named *nata*):
+```bash
+adduser --no-create-home nata
+usermod -aG family nata
+smbpasswd -a nata
+```
+
+Now we can set up the drive as Samba share. Edit the `/usr/share/samba/smb.conf` file by adding the lines:
+```
+[bladerunner]
+	path = /data
+	browseable = no
+	read only = no
+	create mask = 0644
+	hide unreadable = yes
+```
+
+Restart Samba server daemon to apply new settings:
+```bash
+systemctl restart smbd
+```
+
+
 ## Printers
 Sections **printers** and **print$** can be fully commented out, as this server configuration doesn't include any shared printers.
 
