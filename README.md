@@ -75,6 +75,14 @@ apt install plexmediaserver
 
 The Plex Web App can now be accessed via the server's IP address. For example: `http://192.168.4.120:32400/web`. See the [official documentation](https://support.plex.tv/articles/200288666-opening-plex-web-app/) for details.
 
+## File ownership and permissions
+The user *plex* is created upon installation of the media server. In this setup, I added *plex* to the *media* group that owns all movie and TV show files. The commands below ensure that Plex Media Server has read access to all media files and also prevents any of those files from being accidentally deleted.
+```bash
+usermod -aG media plex
+cd /data
+chown -R abe:media Movies Kids_Movies TV_Shows Kids_Shows Music
+```
+
 ## File naming conventions
 Plex can be fastidious in matching file names to corresponding titles in a movie database.
 
