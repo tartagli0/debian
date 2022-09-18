@@ -207,3 +207,4 @@ Sections **printers** and **print$** can be fully commented out, as this server 
 2. Add **panic action** parameter to **global** section (requires **mailx**)
 3.  **smartmontools**
 4. Convert README to Github Pages site
+5. Figure out why transfer speed hovers at ~10Mbps
