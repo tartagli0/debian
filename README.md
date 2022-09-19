@@ -12,6 +12,15 @@ I removed the broken screen from an old laptop and repurposed it as a (literally
 ## Software
 I installed [Debian 11 "Bullseye"](https://wiki.debian.org/DebianBullseye), obtained via the project's [bittorrent download page](https://cdimage.debian.org/debian-cd/current-live/amd64/bt-hybrid/). The most current stable release was [version 11.4](https://www.debian.org/News/2022/20220709).
 
+## Display system info
+[neofetch](https://github.com/dylanaraps/neofetch) is a Bash tool that displays system information (OS name, machine info, RAM, etc.).
+
+Install it in Debian with the command:
+```bash
+apt install neofetch
+```
+Now run the command `neofetch` in a terminal to obtain information on your current system.
+
 
 # Transmission
 The [Transmission](https://transmissionbt.com/) bittorrent client provides a daemon that facilitates downloading large files directly to a server via a web interface.
